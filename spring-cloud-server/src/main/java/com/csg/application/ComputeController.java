@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ComputeController {
     private final Logger logger = Logger.getLogger(getClass());
-    private  DiscoveryClient client;
+    @Autowired
+    private DiscoveryClient client;
 
-
-
-    @RequestMapping(value = "/add" ,method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public Integer add(@RequestParam Integer a, @RequestParam Integer b) {
         ServiceInstance instance = client.getLocalServiceInstance();
         Integer r = a + b;

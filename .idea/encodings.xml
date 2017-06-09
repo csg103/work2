@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/spring-cloud-eureka1" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-cloud-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-cloud-server1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-cloud-web-ribbon" charset="UTF-8" />
   </component>
 </project>
