@@ -26,6 +26,18 @@
     </properties>
 
     <dependencies>
+        <!-- 增加AOP -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!-- 增加服务降级 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.xxx.utils</groupId>
             <artifactId>spring-common-vo</artifactId>

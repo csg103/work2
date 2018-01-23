@@ -6,17 +6,29 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-cloud-eureka1" />
-        <module name="spring-cloud-server" />
-        <module name="spring-cloud-server1" />
-        <module name="spring-cloud-web-ribbon" />
+        <module name="spring-cloud-eureka" />
+        <module name="spring-cloud-server-account" />
+        <module name="spring-cloud-server-order" />
+        <module name="spring-cloud-server-pay" />
+        <module name="spring-cloud-server-product" />
+        <module name="spring-cloud-server-user" />
+        <module name="spring-cloud-web-ribbon-control" />
+        <module name="spring-cloud-web-ribbon-portal" />
+        <module name="spring-common-utils" />
+        <module name="spring-common-vo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring-cloud-eureka1" target="1.8" />
-      <module name="spring-cloud-server" target="1.8" />
-      <module name="spring-cloud-server1" target="1.8" />
-      <module name="spring-cloud-web-ribbon" target="1.8" />
+      <module name="spring-cloud-eureka" target="1.8" />
+      <module name="spring-cloud-server-account" target="1.8" />
+      <module name="spring-cloud-server-order" target="1.8" />
+      <module name="spring-cloud-server-pay" target="1.8" />
+      <module name="spring-cloud-server-product" target="1.8" />
+      <module name="spring-cloud-server-user" target="1.8" />
+      <module name="spring-cloud-web-ribbon-control" target="1.8" />
+      <module name="spring-cloud-web-ribbon-portal" target="1.8" />
+      <module name="spring-common-utils" target="1.8" />
+      <module name="spring-common-vo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
