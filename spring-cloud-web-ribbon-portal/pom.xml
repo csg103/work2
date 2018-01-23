@@ -27,6 +27,18 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.xxx.utils</groupId>
+            <artifactId>spring-common-vo</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xxx.utils</groupId>
+            <artifactId>spring-common-utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-ribbon</artifactId>
         </dependency>
