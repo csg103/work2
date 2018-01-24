@@ -6,9 +6,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class SpringCloudServerPayApplication {
+public class SpringCloudServerAccountApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringCloudServerPayApplication.class, args);
+		SpringApplication.run(SpringCloudServerAccountApplication.class, args);
 	}
 }
