@@ -11,74 +11,93 @@ import java.util.Date;
 
 public class BaseVO {
 
-    private String interfaceName;
+    private String c_interface_id;
+
+    private String c_Interface_version;
     //请求类型
-    private String requestType;
+    private String c_request_type;
     //请求时间
-    private Date  dateTIme;
+    private Date  D_date_tIme;
     //请求渠道
-    private String channel;
+    private String c_channel;
     //请求IP
-    private String requestIP;
+    private String c_request_ip;
     //成功信息
-    private String successMes;
+    private String c_success_mes;
     //失败信息
-    private String failMes;
+    private String c_fail_mes;
 
+    private String c_request_url;
 
-    public String getRequestType() {
-        return requestType;
+    public String getC_interface_id() {
+        return c_interface_id;
     }
 
-    public void setRequestType(String requestType) {
-        this.requestType = requestType;
+    public void setC_interface_id(String c_interface_id) {
+        this.c_interface_id = c_interface_id;
     }
 
-    public Date getDateTIme() {
-        return dateTIme;
+    public String getC_Interface_version() {
+        return c_Interface_version;
     }
 
-    public void setDateTIme(Date dateTIme) {
-        this.dateTIme = dateTIme;
+    public void setC_Interface_version(String c_Interface_version) {
+        this.c_Interface_version = c_Interface_version;
     }
 
-    public String getChannel() {
-        return channel;
+    public String getC_request_type() {
+        return c_request_type;
     }
 
-    public void setChannel(String channel) {
-        this.channel = channel;
+    public void setC_request_type(String c_request_type) {
+        this.c_request_type = c_request_type;
     }
 
-    public String getRequestIP() {
-        return requestIP;
+    public Date getD_date_tIme() {
+        return D_date_tIme;
     }
 
-    public void setRequestIP(String requestIP) {
-        this.requestIP = requestIP;
+    public void setD_date_tIme(Date d_date_tIme) {
+        D_date_tIme = d_date_tIme;
     }
 
-    public String getSuccessMes() {
-        return successMes;
+    public String getC_channel() {
+        return c_channel;
     }
 
-    public void setSuccessMes(String successMes) {
-        this.successMes = successMes;
+    public void setC_channel(String c_channel) {
+        this.c_channel = c_channel;
     }
 
-    public String getFailMes() {
-        return failMes;
+    public String getC_request_ip() {
+        return c_request_ip;
     }
 
-    public void setFailMes(String failMes) {
-        this.failMes = failMes;
+    public void setC_request_ip(String c_request_ip) {
+        this.c_request_ip = c_request_ip;
     }
 
-    public String getInterfaceName() {
-        return interfaceName;
+    public String getC_success_mes() {
+        return c_success_mes;
     }
 
-    public void setInterfaceName(String interfaceName) {
-        this.interfaceName = interfaceName;
+    public void setC_success_mes(String c_success_mes) {
+        this.c_success_mes = c_success_mes;
+    }
+
+    public String getC_fail_mes() {
+        return c_fail_mes;
+    }
+
+    public void setC_fail_mes(String c_fail_mes) {
+        this.c_fail_mes = c_fail_mes;
+    }
+
+    public String getC_request_url() {
+        return c_request_url;
+    }
+
+    public void setC_request_url(String c_request_url) {
+        this.c_request_url = c_request_url;
     }
 }

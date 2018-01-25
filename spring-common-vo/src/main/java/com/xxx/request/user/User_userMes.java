@@ -9,7 +9,7 @@ import com.xxx.BaseVO;
  * @create 2018-01-20:14
  */
 
-public class User_userMes extends BaseVO {
+public class User_userMes  {
     private String username;
     private String usernickname;
     private String usermail;
