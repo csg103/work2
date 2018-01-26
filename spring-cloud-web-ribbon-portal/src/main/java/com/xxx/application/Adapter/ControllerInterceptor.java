@@ -30,7 +30,7 @@ public class ControllerInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        log.info("---------------------开始进入请求地址拦截----------------------------");
+//        log.info("---------------------开始进入请求地址拦截----------------------------");
         String requestUrl = httpServletRequest.getRequestURL().toString();//得到请求的URL地址
         String requestUri = httpServletRequest.getRequestURI();//得到请求的资源
         String remoteAddr = IpUtil.getIpAddr(httpServletRequest); //得到来访者的IP地址
@@ -55,7 +55,7 @@ public class ControllerInterceptor implements HandlerInterceptor {
             String k=iterator.next();
             parmMap.put(k, map.get(k)[0]);
         }
-        log.info("parmMap====="+parmMap.toString());
+//        log.info("parmMap====="+parmMap.toString());
 
 
         //  基础数据验证 如果渠道未明确，可直接返回false
@@ -70,11 +70,11 @@ public class ControllerInterceptor implements HandlerInterceptor {
     }
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
-        log.info("--------------处理请求完成后视图渲染之前的处理操作---------------");
+//        log.info("--------------处理请求完成后视图渲染之前的处理操作---------------");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-        log.info("---------------视图渲染之后的操作-------------------------0");
+//        log.info("---------------视图渲染之后的操作-------------------------0");
     }
 }

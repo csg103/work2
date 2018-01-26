@@ -8,6 +8,9 @@ import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,13 +23,29 @@ import java.util.Map;
 @Service
 public class DispatherService {
     private static final Logger log = LoggerFactory.getLogger(DispatherService.class);
+    @Autowired
     RestTemplate restTemplate;
 
 
     @HystrixCommand(fallbackMethod = "fallback")
     public String excte(Message mes) {
+        HttpHeaders headers = new HttpHeaders();
+        MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
+        headers.setContentType(type);
+        headers.add("Accept", MediaType.APPLICATION_JSON.toString());
 
-        return restTemplate.postForEntity(StaticMes.getStaticMes(StaticMes.XMLSERVICE), mes, String.class).getBody();
+        JSONObject jsonObj = JSONObject.fromObject(mes);
+
+        HttpEntity<String> formEntity = new HttpEntity<String>(jsonObj.toString(), headers);
+try {
+    String result = restTemplate.postForObject(StaticMes.getStaticMes(StaticMes.XMLSERVICE)+"excte", formEntity, String.class);
+
+}catch (Exception e){
+    e.printStackTrace();
+}
+
+        return restTemplate.postForEntity(StaticMes.getStaticMes(StaticMes.XMLSERVICE)+"excte", mes, String.class).getBody();
+
     }
 
     public String fallback(Message mes) {

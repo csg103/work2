@@ -34,16 +34,16 @@ public class Message<T> extends BaseVO{
     //服务器端返回的信息，list类型  
     private Map<String, List<T>> reqMapListMes=new HashMap();
 
-    private Map<String,Boolean> executeflag =new HashMap();
+    private Map<String,Integer> executeflag =new HashMap();
 
     //在业务层用于xml判断 是否执行当前服务。当在a=0时跳过当前服务，可在次map中增加map(a,0). 并在xml中配置节点 <bean executeFlag="mes.getExecuteflag()" >
 
 
-    public Map<String, Boolean> getExecuteflag() {
+    public Map<String, Integer> getExecuteflag() {
         return executeflag;
     }
 
-    public void setExecuteflag(Map<String, Boolean> executeflag) {
+    public void setExecuteflag(Map<String, Integer> executeflag) {
         this.executeflag = executeflag;
     }
 

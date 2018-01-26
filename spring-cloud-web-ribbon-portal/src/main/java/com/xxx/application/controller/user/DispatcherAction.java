@@ -1,12 +1,9 @@
 package com.xxx.application.controller.user;
 
 import com.xxx.Message;
-import com.xxx.application.Adapter.ControllerInterceptor;
 import com.xxx.application.service.user.DispatherService;
 import com.xxx.request.user.User_userMes;
 import com.xxx.utils.DataUtils;
-import com.xxx.utils.IpUtil;
-import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,10 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 @RestController
 public class DispatcherAction {
@@ -51,7 +44,11 @@ public class DispatcherAction {
         if(StringUtils.isEmpty(mes.getC_interface_id())||StringUtils.isEmpty(mes.getC_Interface_version())||StringUtils.isEmpty(mes.getC_channel())){
             return null;
         }else{
-            dispatherService.excte(mes);
+            try {
+                dispatherService.excte(mes);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             return null;
         }
 
@@ -73,7 +70,7 @@ public class DispatcherAction {
 
     @RequestMapping(value = "/order_add", method = RequestMethod.GET)
     public String order_add() {
-        return restTemplate.getForEntity("http://COMPUTE-SERVICE-ORDER/order_add?a=10&b=20", String.class).getBody();
+        return restTemplate.getForObject("http://COMPUTE-SERVICE-ORDER/order_add?a=10&b=20", String.class);
     }
 
     @RequestMapping(value = "/pay_add", method = RequestMethod.GET)
