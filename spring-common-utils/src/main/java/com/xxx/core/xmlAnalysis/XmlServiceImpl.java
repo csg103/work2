@@ -1,8 +1,8 @@
-package com.xxx.application.service;
+package com.xxx.core.xmlAnalysis;
 
 import com.xxx.Message;
-import com.xxx.utils.xmlAnalysisVO.XmlElement;
 import com.xxx.utils.xmlAnalysisVO.XmlBean;
+import com.xxx.utils.xmlAnalysisVO.XmlElement;
 import org.apache.commons.lang.StringUtils;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -14,13 +14,15 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class XmlServiceImpl implements XmlService {
     private static final Logger log = LoggerFactory.getLogger(XmlServiceImpl.class);
-
+    private static  XmlServiceImpl xmlServiceImpl = new XmlServiceImpl();
     /**
      * 读取对应的业务xml 并把服务名字加载到container
      *
@@ -154,5 +156,7 @@ public class XmlServiceImpl implements XmlService {
     private String getCondition(String executeFlag) {
         return executeFlag.contains(">") ? ">" : executeFlag.contains("<") ? "<" : executeFlag.contains("=") ? "=" : "0";
     }
-
+    public static XmlServiceImpl getXmlServiceImpl() {
+        return xmlServiceImpl;
+    }
 }

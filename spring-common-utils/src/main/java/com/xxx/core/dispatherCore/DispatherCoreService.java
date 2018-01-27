@@ -1,4 +1,4 @@
-package com.xxx.core;
+package com.xxx.core.dispatherCore;
 
 import com.xxx.Message;
 import org.springframework.web.client.RestTemplate;

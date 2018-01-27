@@ -2,8 +2,8 @@ package com.xxx.application.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.xxx.Message;
-import com.xxx.application.service.XmlService;
-import com.xxx.core.DispatherCoreServiceImpl;
+import com.xxx.core.dispatherCore.DispatherCoreServiceImpl;
+import com.xxx.core.xmlAnalysis.XmlServiceImpl;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +17,7 @@ import java.util.LinkedHashMap;
 public class XmlController {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(XmlController.class);
 
-    @Autowired
-    private XmlService xmlService   ;
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -27,7 +26,7 @@ public class XmlController {
     public String excte( @RequestBody Message mes) throws Exception {
         LinkedHashMap<String, String> container;
         try {
-            container = xmlService.ClassPathXmlApplicationContext_Service(mes);
+            container = XmlServiceImpl.getXmlServiceImpl().ClassPathXmlApplicationContext_Service(mes);
         } catch (Exception e) {
             e.printStackTrace();
            throw e;

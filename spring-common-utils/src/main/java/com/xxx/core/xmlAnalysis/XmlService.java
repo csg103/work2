@@ -1,9 +1,8 @@
-package com.xxx.application.service;
+package com.xxx.core.xmlAnalysis;
 
 import com.xxx.Message;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * Created by csg on 2018/1/26.

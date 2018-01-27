@@ -2,7 +2,7 @@ package com.xxx.application.service.user;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.xxx.Message;
-import com.xxx.core.DispatherCoreServiceImpl;
+import com.xxx.core.dispatherCore.DispatherCoreServiceImpl;
 import com.xxx.utils.IpUtil;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;

@@ -1,15 +1,9 @@
-package com.xxx.core;
+package com.xxx.core.dispatherCore;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.xxx.Message;
 import com.xxx.staticMes.StaticMes;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.LinkedHashMap;
