@@ -16,12 +16,8 @@ import java.util.LinkedHashMap;
 @RequestMapping("/xml")
 public class XmlController {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(XmlController.class);
-
-
     @Autowired
     private RestTemplate restTemplate;
-
-
     @RequestMapping(value = "/excte", method = RequestMethod.POST)
     public String excte( @RequestBody Message mes) throws Exception {
         LinkedHashMap<String, String> container;
@@ -31,7 +27,6 @@ public class XmlController {
             e.printStackTrace();
            throw e;
         }
-        log.info("spring-cloud-server-xml 執行了一次");
         mes.setReturnflag(mes.getReturnflag()+"excte ");
         mes.setExecuteMap(container);
         mes = DispatherCoreServiceImpl.getDispatherCoreService().getService(restTemplate, mes);
