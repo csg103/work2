@@ -10,18 +10,16 @@ import org.springframework.web.bind.annotation.*;
 public class ComputeController {
 
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(ComputeController.class);
-//    @Autowired
-//    private DiscoveryClient client;
 
     @RequestMapping(value = "/user_add1", method = RequestMethod.POST)
     public String add( @RequestBody Message mes) {
         mes.setReturnflag(mes.getReturnflag()+"user_add1");
         log.info( JSON.toJSONString(mes));
-//        try {
-//            Thread.sleep(10000L);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Thread.sleep(10000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         return JSON.toJSONString(mes);
     }
