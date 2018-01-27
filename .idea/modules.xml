@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-common-utils/target/maven-archiver/maven-archiver.iml" filepath="$PROJECT_DIR$/spring-common-utils/target/maven-archiver/maven-archiver.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-eureka/spring-cloud-eureka.iml" filepath="$PROJECT_DIR$/spring-cloud-eureka/spring-cloud-eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-server-account/spring-cloud-server-account.iml" filepath="$PROJECT_DIR$/spring-cloud-server-account/spring-cloud-server-account.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-server-order/spring-cloud-server-order.iml" filepath="$PROJECT_DIR$/spring-cloud-server-order/spring-cloud-server-order.iml" />
@@ -10,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-server-user/spring-cloud-server-user.iml" filepath="$PROJECT_DIR$/spring-cloud-server-user/spring-cloud-server-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-web-ribbon-control/spring-cloud-web-ribbon-control.iml" filepath="$PROJECT_DIR$/spring-cloud-web-ribbon-control/spring-cloud-web-ribbon-control.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-web-ribbon-portal/spring-cloud-web-ribbon-portal.iml" filepath="$PROJECT_DIR$/spring-cloud-web-ribbon-portal/spring-cloud-web-ribbon-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-server-xml/spring-cloud-web-xml.iml" filepath="$PROJECT_DIR$/spring-cloud-server-xml/spring-cloud-web-xml.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-common-utils/spring-common-utils.iml" filepath="$PROJECT_DIR$/spring-common-utils/spring-common-utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-common-vo/spring-common-vo.iml" filepath="$PROJECT_DIR$/spring-common-vo/spring-common-vo.iml" />
     </modules>

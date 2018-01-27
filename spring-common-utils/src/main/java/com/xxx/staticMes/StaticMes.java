@@ -1,27 +1,27 @@
 package com.xxx.staticMes;
 
 public class StaticMes {
-    public static final String XMLSERVICE = "http://COMPUTE-SERVICE-XML/";
-    public static final String ACCOUNTSERVICE = "http://COMPUTE-SERVICE-ACCOUNT/";
-    public static final String ORDERSERVICE = "http://COMPUTE-SERVICE-ORDER/";
-    public static final String PAYSERVICE = "http://COMPUTE-SERVICE-PAY/";
-    public static final String PRODUCTSERVICE = "http://COMPUTE-SERVICE-PRODUCT/";
-    public static final String USERSERVICE = "http://COMPUTE-SERVICE-USER/";
+    private static final String XMLSERVICE = "http://COMPUTE-SERVICE-XML/";
+    private static final String ACCOUNTSERVICE = "http://COMPUTE-SERVICE-ACCOUNT/";
+    private static final String ORDERSERVICE = "http://COMPUTE-SERVICE-ORDER/";
+    private static final String PAYSERVICE = "http://COMPUTE-SERVICE-PAY/";
+    private static final String PRODUCTSERVICE = "http://COMPUTE-SERVICE-PRODUCT/";
+    private static final String USERSERVICE = "http://COMPUTE-SERVICE-USER/";
 
 
     public static String getStaticMes(String str) {
         switch (str) {
-            case XMLSERVICE:
+            case "XMLSERVICE":
                 return XMLSERVICE;
-            case ACCOUNTSERVICE:
+            case "ACCOUNTSERVICE":
                 return ACCOUNTSERVICE;
-            case ORDERSERVICE:
+            case "ORDERSERVICE":
                 return ORDERSERVICE;
-            case PAYSERVICE:
+            case "PAYSERVICE":
                 return PAYSERVICE;
-            case PRODUCTSERVICE:
+            case "PRODUCTSERVICE":
                 return PRODUCTSERVICE;
-            case USERSERVICE:
+            case "USERSERVICE":
                 return USERSERVICE;
             default:
                 return "";

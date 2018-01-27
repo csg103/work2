@@ -1,5 +1,7 @@
 package com.xxx.application.controller.user;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.xxx.Message;
 import com.xxx.application.service.user.DispatherService;
 import com.xxx.request.user.User_userMes;
@@ -21,8 +23,8 @@ public class DispatcherAction {
 
     private static final Logger log = LoggerFactory.getLogger(DispatcherAction.class);
 
-    @Autowired
-    RestTemplate restTemplate;
+//    @Autowired
+//    RestTemplate restTemplate;
 
     @Autowired
     DispatherService dispatherService;
@@ -37,23 +39,28 @@ public class DispatcherAction {
      */
     @RequestMapping(value = "/excte", method = RequestMethod.POST)
     @ResponseBody
-    public Object portalExcte(HttpServletRequest request, HttpServletResponse response, @RequestBody String strMes, HttpSession session) throws Exception {
+    public Message portalExcte(HttpServletRequest request, HttpServletResponse response, @RequestBody String strMes, HttpSession session) throws Exception {
         Message mes = dispatherService.initRequestMessage(request);
-        mes = dispatherService.initDataMes(mes,strMes);
+        mes = dispatherService.initDataMes(mes, strMes);
+        String str = "";
         log.info(strMes);
-        if(StringUtils.isEmpty(mes.getC_interface_id())||StringUtils.isEmpty(mes.getC_Interface_version())||StringUtils.isEmpty(mes.getC_channel())){
+        if (StringUtils.isEmpty(mes.getC_interface_id()) || StringUtils.isEmpty(mes.getC_Interface_version()) || StringUtils.isEmpty(mes.getC_channel())) {
             return null;
-        }else{
+        } else {
             try {
-                dispatherService.excte(mes);
-            }catch (Exception e){
+                str = dispatherService.excte(mes);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            return null;
+            if (!StringUtils.equals(str, "false")) {
+                mes = (Message) JSON.parseObject(str, new TypeReference<Message>() {
+                });
+            } else {
+                mes.setReturnflag("服务器异常！！");
+            }
         }
-
+        return mes;
     }
-
 
 
     @RequestMapping(value = "/user_add", method = {RequestMethod.POST, RequestMethod.GET})
@@ -68,19 +75,19 @@ public class DispatcherAction {
         return null;
     }
 
-    @RequestMapping(value = "/order_add", method = RequestMethod.GET)
-    public String order_add() {
-        return restTemplate.getForObject("http://COMPUTE-SERVICE-ORDER/order_add?a=10&b=20", String.class);
-    }
-
-    @RequestMapping(value = "/pay_add", method = RequestMethod.GET)
-    public String pay_add() {
-        return restTemplate.getForEntity("http://COMPUTE-SERVICE-PAY/pay_add?a=10&b=20", String.class).getBody();
-    }
-
-    @RequestMapping(value = "/product_add", method = RequestMethod.GET)
-    public String product_add() {
-        return restTemplate.getForEntity("http://COMPUTE-SERVICE-PRODUCT/product_add?a=10&b=20", String.class).getBody();
-    }
+//    @RequestMapping(value = "/order_add", method = RequestMethod.GET)
+//    public String order_add() {
+//        return restTemplate.getForObject("http://COMPUTE-SERVICE-ORDER/order_add?a=10&b=20", String.class);
+//    }
+//
+//    @RequestMapping(value = "/pay_add", method = RequestMethod.GET)
+//    public String pay_add() {
+//        return restTemplate.getForEntity("http://COMPUTE-SERVICE-PAY/pay_add?a=10&b=20", String.class).getBody();
+//    }
+//
+//    @RequestMapping(value = "/product_add", method = RequestMethod.GET)
+//    public String product_add() {
+//        return restTemplate.getForEntity("http://COMPUTE-SERVICE-PRODUCT/product_add?a=10&b=20", String.class).getBody();
+//    }
 
 }

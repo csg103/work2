@@ -1,28 +1,52 @@
 package com.xxx.application;
 
 import com.alibaba.fastjson.JSON;
-import com.xxx.request.user.User_userMes;
+import com.xxx.Message;
 import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ComputeController {
-    private final Logger logger = Logger.getLogger(getClass());
+
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(ComputeController.class);
 //    @Autowired
 //    private DiscoveryClient client;
 
-    @RequestMapping(value = "/user_add", method = RequestMethod.POST)
-
-    public String add( @RequestBody User_userMes userMes) {
-        String tel =userMes.getTel();
+    @RequestMapping(value = "/user_add1", method = RequestMethod.POST)
+    public String add( @RequestBody Message mes) {
+        mes.setReturnflag(mes.getReturnflag()+"user_add1");
+        log.info( JSON.toJSONString(mes));
 //        try {
 //            Thread.sleep(10000L);
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-//        ServiceInstance instance = client.getLocalServiceInstance();
-//        Integer r = a + b?
-//        logger.info("/add, host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", result:" + r);
-        return JSON.toJSONString(userMes);
+
+        return JSON.toJSONString(mes);
+    }
+
+    @RequestMapping(value = "/user_add2", method = RequestMethod.POST)
+    public String add2( @RequestBody Message mes) {
+        log.info( JSON.toJSONString(mes));
+        mes.setReturnflag(mes.getReturnflag()+"user_add2");
+//        try {
+//            Thread.sleep(10000L);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        return JSON.toJSONString(mes);
+    }
+
+    @RequestMapping(value = "/user_add3", method = RequestMethod.POST)
+    public String add3( @RequestBody Message mes) {
+        mes.setReturnflag(mes.getReturnflag()+"user_add3");
+        log.info( JSON.toJSONString(mes));
+//        try {
+//            Thread.sleep(10000L);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        return JSON.toJSONString(mes);
     }
 }

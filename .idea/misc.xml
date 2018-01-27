@@ -5,14 +5,16 @@
       <list>
         <option value="$PROJECT_DIR$/spring-common-vo/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-common-utils/target/maven-archiver/pom.properties" />
         <option value="$PROJECT_DIR$/spring-common-utils/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-server-pay/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-server-xml/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-server-user/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-server-order/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-server-account/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-server-product/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-web-ribbon-portal/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-web-ribbon-control/pom.xml" />
-        <option value="$PROJECT_DIR$/spring-cloud-server-account/pom.xml" />
       </list>
     </option>
   </component>

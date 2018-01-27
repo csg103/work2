@@ -14,11 +14,19 @@
         <module name="spring-cloud-server-user" />
         <module name="spring-cloud-web-ribbon-control" />
         <module name="spring-cloud-web-ribbon-portal" />
+        <module name="spring-cloud-web-xml" />
         <module name="spring-common-utils" />
         <module name="spring-common-vo" />
       </profile>
+      <profile name="Annotation profile for Unknown" enabled="true">
+        <sourceOutputDir name="../generated-sources/annotations" />
+        <sourceTestOutputDir name="../generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="maven-archiver" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="maven-archiver" target="1.5" />
       <module name="spring-cloud-eureka" target="1.8" />
       <module name="spring-cloud-server-account" target="1.8" />
       <module name="spring-cloud-server-order" target="1.8" />
@@ -27,6 +35,7 @@
       <module name="spring-cloud-server-user" target="1.8" />
       <module name="spring-cloud-web-ribbon-control" target="1.8" />
       <module name="spring-cloud-web-ribbon-portal" target="1.8" />
+      <module name="spring-cloud-web-xml" target="1.8" />
       <module name="spring-common-utils" target="1.8" />
       <module name="spring-common-vo" target="1.8" />
     </bytecodeTargetLevel>

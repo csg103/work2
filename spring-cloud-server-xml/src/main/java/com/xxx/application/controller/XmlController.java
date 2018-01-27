@@ -1,34 +1,46 @@
 package com.xxx.application.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.xxx.Message;
 import com.xxx.application.service.XmlService;
+import com.xxx.core.DispatherCoreService;
 import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 
 @RestController
+@RequestMapping("/xml")
 public class XmlController {
-    private final Logger logger = Logger.getLogger(getClass());
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(XmlController.class);
+
     @Autowired
     private XmlService xmlService   ;
-    private static final String IFELEMENT = "if";
-    private static final String BEANELEMENT = "bean";
+    @Autowired
+    private RestTemplate restTemplate;
+
+
     @RequestMapping(value = "/excte", method = RequestMethod.POST)
-    public String excte( @RequestBody Message mes) {
-        Map<Integer, Map<String, String>> container = new ConcurrentHashMap<Integer, Map<String, String>>();
-	    container.clear();
+    public String excte( @RequestBody Message mes) throws Exception {
+        LinkedHashMap<String, String> container =new LinkedHashMap<>();
         try {
-            container = xmlService.ClassPathXmlApplicationContext_Service(mes,container);
+            container = xmlService.ClassPathXmlApplicationContext_Service(mes);
         } catch (Exception e) {
             e.printStackTrace();
-            mes.setC_fail_mes("业务异常");
-            return null;
+           throw e;
         }
-        return null;
+        log.info("spring-cloud-server-xml 執行了一次");
+        mes.setReturnflag(mes.getReturnflag()+"excte ");
+        mes.setExecuteMap(container);
+        mes = DispatherCoreService.getService(restTemplate, mes);
+        return JSON.toJSONString(mes);
     }
 
 

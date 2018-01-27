@@ -1,19 +1,19 @@
 package com.xxx.application;
 
+import com.alibaba.fastjson.JSON;
+import com.xxx.Message;
 import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class ComputeController {
-    private final Logger logger = Logger.getLogger(getClass());
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(ComputeController.class);
 //    @Autowired
 //    private  DiscoveryClient client;
 
@@ -26,4 +26,17 @@ public class ComputeController {
        // logger.info("/add, host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", result:" + r);
         return 1;
     }
+    @RequestMapping(value = "/order_add1", method = RequestMethod.POST)
+    public String add( @RequestBody Message mes) {
+        mes.setReturnflag(mes.getReturnflag()+"order_add1");
+        log.info( JSON.toJSONString(mes));
+//        try {
+//            Thread.sleep(10000L);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+        return JSON.toJSONString(mes);
+    }
+
 }

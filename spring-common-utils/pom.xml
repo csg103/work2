@@ -32,6 +32,12 @@
 		</dependency>
 
 
+		<dependency>
+			<groupId>com.xxx.vo</groupId>
+			<artifactId>spring-common-vo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 
 		<!-- JSON fastJSON -->
 		<dependency>
@@ -63,6 +69,11 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>4.3.9.RELEASE</version>
         </dependency>
     </dependencies>
 

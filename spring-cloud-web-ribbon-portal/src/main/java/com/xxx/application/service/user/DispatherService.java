@@ -1,7 +1,9 @@
 package com.xxx.application.service.user;
 
+import com.alibaba.fastjson.JSON;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.xxx.Message;
+import com.xxx.core.DispatherCoreService;
 import com.xxx.staticMes.StaticMes;
 import com.xxx.utils.IpUtil;
 import net.sf.json.JSONObject;
@@ -15,10 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class DispatherService {
@@ -29,28 +28,27 @@ public class DispatherService {
 
     @HystrixCommand(fallbackMethod = "fallback")
     public String excte(Message mes) {
-        HttpHeaders headers = new HttpHeaders();
-        MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
-        headers.setContentType(type);
-        headers.add("Accept", MediaType.APPLICATION_JSON.toString());
+        //添加用于判断XML表达式所标注的bean是否执行的参数map
+        Map mapflag =new HashMap();
+        mapflag.put("inta",9);
+        mes.setExecuteflag(mapflag);
+        LinkedHashMap mapService =new LinkedHashMap();
+        mapService.put("xml/excte","XMLSERVICE");
+        mes.setExecuteMap(mapService);
 
-        JSONObject jsonObj = JSONObject.fromObject(mes);
-
-        HttpEntity<String> formEntity = new HttpEntity<String>(jsonObj.toString(), headers);
 try {
-    String result = restTemplate.postForObject(StaticMes.getStaticMes(StaticMes.XMLSERVICE)+"excte", formEntity, String.class);
-
+    //restTemplate.postForEntity(StaticMes.getStaticMes(StaticMes.XMLSERVICE)+"xml/excte", mes, String.class).getBody();
+    mes = DispatherCoreService.getService(restTemplate, mes);
 }catch (Exception e){
     e.printStackTrace();
 }
-
-        return restTemplate.postForEntity(StaticMes.getStaticMes(StaticMes.XMLSERVICE)+"excte", mes, String.class).getBody();
+        return    JSON.toJSONString(mes);
 
     }
 
     public String fallback(Message mes) {
 
-        return "spring cloud 服务提供者异常 无法在规定时间返回数据！";
+        return "false";
     }
 
     public Message initRequestMessage(HttpServletRequest req) {
