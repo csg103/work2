@@ -2,7 +2,7 @@ package com.xxx.application.service.user;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.xxx.Message;
-import com.xxx.core.DispatherCoreService;
+import com.xxx.core.DispatherCoreServiceImpl;
 import com.xxx.utils.IpUtil;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
@@ -24,33 +24,33 @@ public class DispatherServiceImpl {
 
     @HystrixCommand(fallbackMethod = "fallback")
     public Message excte(Message mes) {
-
-
         //添加用于判断XML表达式所标注的bean是否执行的参数map
-        Map mapflag =new HashMap();
-        mapflag.put("inta",9);
+        Map mapflag = new HashMap();
+        mapflag.put("inta", 9);
         mes.setExecuteflag(mapflag);
         //添加调用服务的服务名和方法名
-        LinkedHashMap mapService =new LinkedHashMap();
-        mapService.put("xml/excte","XMLSERVICE");
+        LinkedHashMap mapService = new LinkedHashMap();
+        mapService.put("xml/excte", "XMLSERVICE");
         mes.setExecuteMap(mapService);
         try {
-            mes = DispatherCoreService.getService(restTemplate, mes);
-        }catch (Exception e){
+            mes = DispatherCoreServiceImpl.getDispatherCoreService().getService(restTemplate, mes);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return mes;
 
     }
-  private  Message checkMes(Message mes){
-      if (StringUtils.isEmpty(mes.getC_interface_id()) || StringUtils.isEmpty(mes.getC_Interface_version()) || StringUtils.isEmpty(mes.getC_channel())) {
-          mes.setReturnflag("false");
-          mes.setC_fail_mes("接口名 版本号 渠道号 不能为空！！！");
-          return mes;
-      } else {
-          return mes;
-      }
-  }
+
+    private Message checkMes(Message mes) {
+        if (StringUtils.isEmpty(mes.getC_interface_id()) || StringUtils.isEmpty(mes.getC_Interface_version()) || StringUtils.isEmpty(mes.getC_channel())) {
+            mes.setReturnflag("false");
+            mes.setC_fail_mes("接口名 版本号 渠道号 不能为空！！！");
+            return mes;
+        } else {
+            return mes;
+        }
+    }
+
     public Message fallback(Message mes) {
         mes.setReturnflag("false");
         mes.setC_fail_mes("服务器反应时间超长！");
@@ -91,7 +91,7 @@ public class DispatherServiceImpl {
         mes.setReqMapObjectMes(map);
 
         mes = checkMes(mes);
-        if(StringUtils.equals("false",mes.getReturnflag())){
+        if (StringUtils.equals("false", mes.getReturnflag())) {
             return mes;
         }
         return mes;

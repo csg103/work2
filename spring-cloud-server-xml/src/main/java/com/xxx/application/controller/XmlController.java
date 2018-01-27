@@ -3,17 +3,13 @@ package com.xxx.application.controller;
 import com.alibaba.fastjson.JSON;
 import com.xxx.Message;
 import com.xxx.application.service.XmlService;
-import com.xxx.core.DispatherCoreService;
-import org.apache.log4j.Logger;
+import com.xxx.core.DispatherCoreServiceImpl;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 
 @RestController
@@ -39,7 +35,7 @@ public class XmlController {
         log.info("spring-cloud-server-xml 執行了一次");
         mes.setReturnflag(mes.getReturnflag()+"excte ");
         mes.setExecuteMap(container);
-        mes = DispatherCoreService.getService(restTemplate, mes);
+        mes = DispatherCoreServiceImpl.getDispatherCoreService().getService(restTemplate, mes);
         return JSON.toJSONString(mes);
     }
 
