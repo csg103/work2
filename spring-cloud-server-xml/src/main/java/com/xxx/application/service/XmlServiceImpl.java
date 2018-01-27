@@ -31,25 +31,23 @@ public class XmlServiceImpl implements XmlService {
         String interfaceId = mes.getC_interface_id();
         Document doc = getDocument(interfaceId);
         XmlElement xmlElement =  getXmlElement(doc);
-
         LinkedHashMap  map =    getContainer(mes,xmlElement);
         return  map;
     }
    private  LinkedHashMap<String, String>   getContainer(Message mes, XmlElement xmlElement) throws Exception {
-       LinkedHashMap<String, String> beanmap = new  LinkedHashMap<String, String>();
+       LinkedHashMap<String, String> beanmap = new  LinkedHashMap<>();
         List<XmlBean>  list = xmlElement.getXmlbean();
-        String expression ="";
-        String executeflag = "1";
+        String expression ;
+        String executeFlag = "1";
         for(XmlBean xmlbean : list){
             expression =   xmlbean.getExpression();
-
                 try {
-                    executeflag = getexecuteFlag(mes, expression);
+                    executeFlag = getexecuteFlag(mes, expression);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             //executeflag  1表示未配置expression表达式，执行当前任务或表达式成功执行任务，0 表示不执行当前任务 2表示配置了表达式，但表达式配置中没有 > < =三者中的一个
-            switch (executeflag) {
+            switch (executeFlag) {
                 case "0":
                     break;
                 case "1":

@@ -25,7 +25,7 @@ public class XmlController {
 
     @RequestMapping(value = "/excte", method = RequestMethod.POST)
     public String excte( @RequestBody Message mes) throws Exception {
-        LinkedHashMap<String, String> container =new LinkedHashMap<>();
+        LinkedHashMap<String, String> container;
         try {
             container = xmlService.ClassPathXmlApplicationContext_Service(mes);
         } catch (Exception e) {
