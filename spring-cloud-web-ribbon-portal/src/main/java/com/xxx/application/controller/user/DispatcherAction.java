@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.net.ConnectException;
 import java.util.Date;
 
 @RestController
@@ -38,7 +39,12 @@ public class DispatcherAction {
         log.info("请求参数-------" + JSON.toJSONString(mes));
         mes = dispatherServiceImpl.initDataMes(mes, strMes);
         if (StringUtils.equals("false", mes.getReturnflag())) return mes;
-        mes = dispatherServiceImpl.excte(mes);
+        try {
+            mes = dispatherServiceImpl.excte(mes);
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
         Date endTime = new Date();
         log.info("返回参数---" + JSON.toJSONString(mes));
         log.info("请求结束耗时---" + (endTime.getTime() - startTime.getTime()));

@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,13 +33,8 @@ public class DispatherServiceImpl {
         LinkedHashMap mapService = new LinkedHashMap();
         mapService.put("xml/excte", "XMLSERVICE");
         mes.setExecuteMap(mapService);
-        try {
-            mes = DispatherCoreServiceImpl.getDispatherCoreService().getService(restTemplate, mes);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        mes = DispatherCoreServiceImpl.getDispatherCoreService().getService(restTemplate, mes);
         return mes;
-
     }
 
     private Message checkMes(Message mes) {
