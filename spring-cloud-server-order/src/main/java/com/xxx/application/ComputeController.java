@@ -30,12 +30,12 @@ public class ComputeController {
     public String add( @RequestBody Message mes) {
         mes.setReturnflag(mes.getReturnflag()+"order_add1");
         log.info( JSON.toJSONString(mes));
-        try {
-            Thread.sleep(10000L);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-
-        }
+//        try {
+//            Thread.sleep(10000L);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//
+//        }
 
         return JSON.toJSONString(mes);
     }

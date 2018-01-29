@@ -19,12 +19,30 @@
 	</parent>
 
 	<properties>
+
+		<targetJavaProject>src/main/java</targetJavaProject>
+		<targetMapperPackage>com.xxx.data.product.dao.mybatis</targetMapperPackage>
+		<targetModelPackage>com.xxx.data.product.entity.mybatis</targetModelPackage>
+		<targetResourcesProject>src/main/resources</targetResourcesProject>
+		<targetXMLPackage>mapper/product</targetXMLPackage>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
+
+		<!-- Mariadb 依赖 驱动  Mariadb数据库驱动，使用Mariadb数据库性能优于mysql-->
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>1.5.9</version>
+		</dependency>
+		<dependency>
+			<groupId>tk.mybatis</groupId>
+			<artifactId>mapper</artifactId>
+			<version>3.4.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -42,6 +60,27 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<configuration>
+					<configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+					<overwrite>true</overwrite>
+					<verbose>true</verbose>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.mariadb.jdbc</groupId>
+						<artifactId>mariadb-java-client</artifactId>
+						<version>1.5.9</version>
+					</dependency>
+					<dependency>
+						<groupId>tk.mybatis</groupId>
+						<artifactId>mapper</artifactId>
+						<version>3.4.0</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

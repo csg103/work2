@@ -30,9 +30,11 @@ public class DispatherCoreServiceImpl implements DispatherCoreService{
             for (Map.Entry<String, String> entry : executeMap.entrySet()) {
                 value = StaticMes.getStaticMes(entry.getValue());
                 key = entry.getKey();
+                log.info("执行服务请求---"+value + key);
                 String returnStr = restTemplate.postForEntity(value + key, mes, String.class).getBody();
                 mes = JSON.parseObject(returnStr, new TypeReference<Message>() {
                 });
+
             }
         }catch (IllegalStateException e){
             mes.setReturnflag("false");

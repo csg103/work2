@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxx.data.product.dao.mybatis.ProductMesMapper">
+  <resultMap id="BaseResultMap" type="com.xxx.data.product.entity.mybatis.ProductMes">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="c_product_id" jdbcType="VARCHAR" property="productId" />
+    <result column="c_product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="c_product_introduction" jdbcType="VARCHAR" property="productIntroduction" />
+    <result column="c_product_owner_id" jdbcType="VARCHAR" property="productOwnerId" />
+    <result column="c_product_type_id" jdbcType="VARCHAR" property="productTypeId" />
+    <result column="c_product_creat_time" jdbcType="DATE" property="productCreatTime" />
+    <result column="c_product_creater" jdbcType="VARCHAR" property="productCreater" />
+    <result column="c_product_top_pic_list_id" jdbcType="VARCHAR" property="productTopPicListId" />
+    <result column="c_product_middle_pic_list_id" jdbcType="VARCHAR" property="productMiddlePicListId" />
+    <result column="c_product_details_page" jdbcType="VARCHAR" property="productDetailsPage" />
+    <result column="c_product_num" jdbcType="INTEGER" property="productNum" />
+    <result column="c_product_price" jdbcType="DOUBLE" property="productPrice" />
+    <result column="c_text1" jdbcType="VARCHAR" property="text1" />
+    <result column="c_text2" jdbcType="VARCHAR" property="text2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    c_product_id, c_product_name, c_product_introduction, c_product_owner_id, c_product_type_id, 
+    c_product_creat_time, c_product_creater, c_product_top_pic_list_id, c_product_middle_pic_list_id, 
+    c_product_details_page, c_product_num, c_product_price, c_text1, c_text2
+  </sql>
+  <select id="countByExample" parameterType="com.xxx.data.product.entity.mybatis.ProductMesExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from t_product_mes
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

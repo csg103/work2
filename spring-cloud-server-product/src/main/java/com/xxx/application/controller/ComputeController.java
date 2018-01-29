@@ -1,0 +1,33 @@
+package com.xxx.application.controller;
+
+import com.alibaba.fastjson.JSON;
+import com.xxx.Message;
+import com.xxx.data.product.dao.mybatis.ProductMesMapper;
+import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+public class ComputeController {
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(ComputeController.class);
+    @Autowired
+    private ProductMesMapper productMesMapper;
+    private final Logger logger = Logger.getLogger(getClass());
+//    @Autowired
+//    private DiscoveryClient client;
+
+    @RequestMapping(value = "/product_add1", method = RequestMethod.POST)
+    public String add( @RequestBody Message mes) {
+        mes.setReturnflag(mes.getReturnflag()+"order_add1");
+        log.info( JSON.toJSONString(mes));
+//        productMesMapper.
+//        ServiceInstance instance = client.getLocalServiceInstance();
+//        Integer r = a + b;
+//        logger.info("/add, host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", result:" + r);
+          return JSON.toJSONString(mes);
+    }
+
+}

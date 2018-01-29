@@ -18,5 +18,7 @@
 	<bean id="parseSelectCommentTotalService" method ="user_add2" serviceName="USERSERVICE" expression ="inta &gt;  5" class="com.Cri.ChinaNews.Parse.ParseSelectCommentTotalService"/>
 	<bean id="parseSelectCommentTotalService" method ="order_add1" serviceName="ORDERSERVICE" class="com.Cri.ChinaNews.Parse.ParseSelectCommentTotalService"/>
 
+	<bean id="parseSelectCommentTotalService" method ="product_add1" serviceName="PRODUCTSERVICE" class="com.Cri.ChinaNews.Parse.ParseSelectCommentTotalService"/>
+
 
 </beans>
