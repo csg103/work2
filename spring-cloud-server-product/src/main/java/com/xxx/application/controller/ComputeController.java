@@ -3,11 +3,10 @@ package com.xxx.application.controller;
 import com.alibaba.fastjson.JSON;
 import com.xxx.Message;
 import com.xxx.data.product.dao.mybatis.ProductMesMapper;
+import com.xxx.data.product.entity.mybatis.ProductMes;
 import org.apache.log4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,10 +22,10 @@ public class ComputeController {
     public String add( @RequestBody Message mes) {
         mes.setReturnflag(mes.getReturnflag()+"order_add1");
         log.info( JSON.toJSONString(mes));
-//        productMesMapper.
-//        ServiceInstance instance = client.getLocalServiceInstance();
-//        Integer r = a + b;
-//        logger.info("/add, host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", result:" + r);
+
+        ProductMes productMes = new ProductMes();
+        productMes.setProductId("123");
+        productMesMapper.insert(productMes);
           return JSON.toJSONString(mes);
     }
 
