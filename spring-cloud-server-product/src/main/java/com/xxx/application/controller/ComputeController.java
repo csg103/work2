@@ -14,7 +14,6 @@ public class ComputeController {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(ComputeController.class);
     @Autowired
     private ProductMesMapper productMesMapper;
-    private final Logger logger = Logger.getLogger(getClass());
 //    @Autowired
 //    private DiscoveryClient client;
 
